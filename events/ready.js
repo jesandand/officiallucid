@@ -1,12 +1,16 @@
+module.exports = async (client) => {
+  console.log(`[API] Logged in as ${client.user.username}`);
 
+    let statuses = [
+        `v.help | Vania Gemash ©`,
+        `v.help | Stay In ${client.guilds.cache.size} Server`,
+        `v.help | Development By Jesand#1987`,
+        `v.help | #MarhabanYaRamadhan`
+    ];
 
-module.exports = client => {
-  console.log("The bot is ready!");
-  
+    setInterval(function() {
 
-    const guild = client.guilds.cache.get('768719993939689512')
-
-    client.user.setActivity(`The Little Heaven 2021 | ${guild.memberCount} Members`, {
-        type: "LISTENING"
-    }).catch(console.error)
-}
+        let status = statuses[Math.floor(Math.random() * statuses.length)]
+        client.user.setPresence({ activity: { name: status, type: "STREAMING"}, status: 'online'});
+    }, 2000);
+};
